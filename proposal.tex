@@ -180,7 +180,7 @@ The combination of high-volume social media data with minute-level price informa
 The approach combines natural language processing for sentiment extraction with time series analysis for anomaly detection—a hybrid strategy that addresses the core challenge of distinguishing meaningful signals from social media noise.
 
 \subsection{\textbf{Sentiment Analysis}}
-After experimenting with several sentiment analysis approaches, the research settled on Sentence-Bidirectional Encoder Representations from Transformers (SBERT) (Reimers \& Gurevych, 2019) fine-tuned on the FinBERT corpus (Araci, 2019). This choice was not arbitrary—generic sentiment analyzers consistently misinterpret cryptocurrency discussions. When someone tweets "Bitcoin is going to the moon," a standard sentiment analyzer might miss the bullish implication, while FinBERT understands this as strongly positive sentiment.
+The core of the sentiment analysis will be conducted using the FinBERT model (Araci, 2019), a Bidirectional Encoder Representations from Transformers (BERT) model fine-tuned on a large corpus of financial text. This choice is critical, as generic sentiment analyzers consistently misinterpret cryptocurrency discussions. When someone tweets "Bitcoin is going to the moon," a standard sentiment analyzer might miss the bullish implication, while FinBERT understands this as strongly positive sentiment. A potential challenge to address is the uneven velocity of tweets, which can lead to periods of sparse data and may require special handling during temporal aggregation.
 
 The financial domain specificity provides crucial advantages: better recognition of trading jargon ("diamond hands," "HODL"), proper interpretation of directional language ("bearish" vs. "bullish"), and nuanced understanding of market-specific expressions that pervade crypto Twitter.
 
@@ -231,6 +231,7 @@ The implementation will maintain a modular architecture to allow for:
 \item Easy substitution of different sentiment analysis models
 \item Experimentation with various anomaly detection parameters
 \item Integration of additional data sources in future iterations
+\item Handling of uneven tweet velocity and data sparsity through techniques like forward-filling or interpolation.
 \end{itemize}
 
 \section{Evaluation Plan \& Success Criteria}
